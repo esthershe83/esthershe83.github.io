@@ -1334,5 +1334,35 @@
     }
   });
 </script>
+
+  <!-- Visitor Tracker -->
+  <script>
+    (function () {
+      var payload = {
+        access_key: "1df6b209-af7a-4158-b224-5750e9521d42",
+        subject: "New Portfolio Visitor",
+        from_name: "Portfolio Tracker",
+        message: [
+          "Page Title : " + document.title,
+          "URL        : " + location.href,
+          "Referrer   : " + (document.referrer || "Direct / None"),
+          "Timestamp  : " + new Date().toLocaleString("en-GB", {
+            timeZone: "Asia/Singapore",
+            dateStyle: "full",
+            timeStyle: "medium",
+          }),
+        ].join("\n"),
+      };
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      }).catch(function () {
+        // Fail silently — visitor never knows
+      });
+    })();
+  </script>
+  <!-- End Visitor Tracker -->
 </body>
 </html>
