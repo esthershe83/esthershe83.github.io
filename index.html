@@ -1338,19 +1338,36 @@
   <!-- Visitor Tracker -->
   <script>
     (function () {
+      var ua = navigator.userAgent;
+      var deviceType = /Mobi|Android|iPhone/i.test(ua)
+        ? "Mobile"
+        : /iPad|Tablet/i.test(ua)
+        ? "Tablet"
+        : "Desktop";
+
       var payload = {
         access_key: "1df6b209-af7a-4158-b224-5750e9521d42",
         subject: "New Portfolio Visitor",
         from_name: "Portfolio Tracker",
         message: [
-          "Page Title : " + document.title,
-          "URL        : " + location.href,
-          "Referrer   : " + (document.referrer || "Direct / None"),
-          "Timestamp  : " + new Date().toLocaleString("en-GB", {
+          "── PAGE ──────────────────────────",
+          "Page Title  : " + document.title,
+          "URL         : " + location.href,
+          "Referrer    : " + (document.referrer || "Direct / None"),
+          "Timestamp   : " + new Date().toLocaleString("en-GB", {
             timeZone: "Asia/Singapore",
             dateStyle: "full",
             timeStyle: "medium",
           }),
+          "",
+          "── DEVICE ────────────────────────",
+          "Device Type : " + deviceType,
+          "User Agent  : " + ua,
+          "Screen      : " + screen.width + "x" + screen.height,
+          "Viewport    : " + window.innerWidth + "x" + window.innerHeight,
+          "Language    : " + navigator.language,
+          "Timezone    : " + Intl.DateTimeFormat().resolvedOptions().timeZone,
+          "Touch       : " + ("ontouchstart" in window ? "Yes" : "No"),
         ].join("\n"),
       };
 
