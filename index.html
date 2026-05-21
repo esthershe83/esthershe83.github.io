@@ -1338,6 +1338,34 @@
   <!-- Visitor Tracker -->
   <script>
     (function () {
+      var COOLDOWN_MS = 30 * 60 * 1000; // 30 minutes per browser
+      var ALLOWED_TIMEZONES = [
+        "Asia/Singapore",
+        "Asia/Kuala_Lumpur",
+        "Asia/Jakarta",
+        "Asia/Bangkok",
+        "Asia/Hong_Kong",
+        "Asia/Taipei",
+        "Asia/Tokyo",
+        "Asia/Manila",
+        "Asia/Kolkata",
+        "Australia/Sydney",
+        "Australia/Melbourne",
+      ];
+
+      // Guard 1: Rate limit — skip if same browser visited recently
+      var lastSent = localStorage.getItem("vt_last_sent");
+      if (lastSent && Date.now() - parseInt(lastSent, 10) < COOLDOWN_MS) return;
+
+      // Guard 2: Bot detection — skip if page loaded in under 500ms
+      var pageLoadTime = Date.now() - performance.timing.navigationStart;
+      if (pageLoadTime < 500) return;
+
+      // Guard 3: Timezone allowlist — skip if visitor is not in an allowed region
+      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (ALLOWED_TIMEZONES.indexOf(tz) === -1) return;
+
+      // All guards passed — build and send payload
       var ua = navigator.userAgent;
       var deviceType = /Mobi|Android|iPhone/i.test(ua)
         ? "Mobile"
@@ -1366,7 +1394,7 @@
           "Screen      : " + screen.width + "x" + screen.height,
           "Viewport    : " + window.innerWidth + "x" + window.innerHeight,
           "Language    : " + navigator.language,
-          "Timezone    : " + Intl.DateTimeFormat().resolvedOptions().timeZone,
+          "Timezone    : " + tz,
           "Touch       : " + ("ontouchstart" in window ? "Yes" : "No"),
         ].join("\n"),
       };
@@ -1375,6 +1403,8 @@
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(payload),
+      }).then(function (res) {
+        if (res.ok) localStorage.setItem("vt_last_sent", Date.now().toString());
       }).catch(function () {
         // Fail silently — visitor never knows
       });
