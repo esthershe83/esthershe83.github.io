@@ -645,6 +645,34 @@
   .process-bar.adkar .process-step { line-height: 1.3; }
   .look-back p { font-size: 0.95rem; line-height: 1.7; color: #e8d8d0; }
 
+
+  /* ── EXPERIMENT (research to motion) ── */
+  .cs5 .case-sidebar { background: #e8dcf0; }
+  .cs-card.cs-card-exp {
+    grid-column: 1 / -1;
+    background: var(--dark);
+    display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+    padding: 1.6rem 2rem;
+  }
+  .cs-card.cs-card-exp .num { color: var(--peach); margin-bottom: 0.4rem; }
+  .cs-card.cs-card-exp h3 { color: var(--white); }
+  .cs-card.cs-card-exp .exp-go {
+    font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--peach); white-space: nowrap;
+  }
+  .video-frame {
+    background: #0b0d1a;
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 1.5rem 0;
+    box-shadow: 0 20px 50px rgba(46,34,32,0.18);
+  }
+  .video-frame video { display: block; width: 100%; height: auto; }
+  .video-caption {
+    font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--mid); margin-top: -0.6rem;
+  }
+
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
@@ -660,6 +688,7 @@
     #hero { padding: 0 1.5rem 4rem; }
     .three-col { grid-template-columns: 1fr; }
     .process-bar.adkar .process-step { font-size: 0.48rem; letter-spacing: 0.02em; padding: 0.6rem 0.15rem; }
+    .cs-card.cs-card-exp { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
@@ -677,6 +706,7 @@
         <li role="none"><a href="#cs2" role="menuitem">AI Calendaring</a></li>
         <li role="none"><a href="#cs3" role="menuitem">EV App</a></li>
         <li role="none"><a href="#cs4" role="menuitem">Change Management</a></li>
+        <li role="none"><a href="#cs5" role="menuitem">Research to Motion</a></li>
       </ul>
     </li>
     <li><a href="#contact">Let's chat</a></li>
@@ -728,6 +758,13 @@
   <div class="cs-card reveal" style="background:var(--green);" onclick="document.getElementById('cs4').scrollIntoView({behavior:'smooth'})">
     <p class="num">Case Study 4</p>
     <h3>Leading Change Management</h3>
+  </div>
+  <div class="cs-card cs-card-exp reveal" onclick="document.getElementById('cs5').scrollIntoView({behavior:'smooth'})">
+    <div>
+      <p class="num">Experiment · AI</p>
+      <h3>Turning Research into Motion</h3>
+    </div>
+    <span class="exp-go">Watch the film ▶</span>
   </div>
 </div>
 
@@ -1212,6 +1249,118 @@
   </div>
 </section>
 
+<!-- ━━━━━━━━━━━━━━━━━━ EXPERIMENT · RESEARCH TO MOTION ━━━━━━━━━━━━━━━━━━ -->
+<section id="cs5" class="case-section cs5"><span id="research-to-motion" class="anchor-alias" aria-hidden="true"></span>
+  <div class="case-wrapper">
+    <div class="case-header">
+      <div class="case-sidebar">
+        <p class="cs-num">Experiment · AI</p>
+        <h2>Turning Research into Motion</h2>
+        <p>A research study on how prayer affects the brain was fascinating but dense, and I caught myself skimming. Sometimes seeing is easier than reading, so I turned it into a 30-second motion explainer.</p>
+        <div class="meta">
+          <p class="meta-label">Role</p>
+          <p class="meta-val">Concept, scriptwriting &amp; creative direction</p>
+          <p class="meta-label">Made with</p>
+          <p class="meta-val">Claude (AI), built entirely in code: animation, typography and an original synthesized score</p>
+          <p class="meta-label">Format</p>
+          <p class="meta-val">30-second film · 1080p</p>
+        </div>
+      </div>
+      <div>
+        <!-- DISCOVERY -->
+        <div class="process-bar">
+          <div class="process-step">Strategy</div>
+          <div class="process-step active">Discovery</div>
+          <div class="process-step">Analysis</div>
+          <div class="process-step">Design</div>
+          <div class="process-step">Production</div>
+        </div>
+        <div class="content-block reveal">
+          <p class="block-title">The spark</p>
+          <h2 class="block-heading">Too much to read, so what if you could watch it?</h2>
+          <p class="block-text">The study covered blood flow, metabolism, pain relief, the amygdala, emotions and neuroplasticity, all in nested bullet points and clinical terms. I wondered how many readers would stop halfway, and whether motion could carry the same ideas more easily.</p>
+        </div>
+
+        <!-- ANALYSIS -->
+        <div class="process-bar reveal">
+          <div class="process-step">Strategy</div>
+          <div class="process-step">Discovery</div>
+          <div class="process-step active">Analysis</div>
+          <div class="process-step">Design</div>
+          <div class="process-step">Production</div>
+        </div>
+        <div class="content-block reveal">
+          <p class="block-title">Distilling the study</p>
+          <p class="block-text">I cut the research down to a simple three-act story a viewer could follow without pausing.</p>
+          <div class="chips">
+            <span class="chip">I · The body</span>
+            <span class="chip">II · The heart</span>
+            <span class="chip">III · The wiring</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESIGN -->
+    <div class="process-bar reveal">
+      <div class="process-step">Strategy</div>
+      <div class="process-step">Discovery</div>
+      <div class="process-step">Analysis</div>
+      <div class="process-step active">Design</div>
+      <div class="process-step">Production</div>
+    </div>
+    <div class="content-block reveal">
+      <p class="block-title">One visual metaphor per idea</p>
+      <ul class="proto-list" style="margin-top:1.2rem;">
+        <li><span class="proto-num">1</span><div class="proto-text"><strong>Pain relief</strong>A jagged incoming signal that smooths into a calm wave.</div></li>
+        <li><span class="proto-num">2</span><div class="proto-text"><strong>The amygdala</strong>A red alarm pulse that slows down and cools to blue.</div></li>
+        <li><span class="proto-num">3</span><div class="proto-text"><strong>Calmer heart</strong>A heartbeat trace that visibly slows as stress words are struck out.</div></li>
+        <li><span class="proto-num">4</span><div class="proto-text"><strong>Neuroplasticity</strong>Old pathways fading while new gold ones light up and strengthen.</div></li>
+      </ul>
+    </div>
+
+    <!-- PRODUCTION -->
+    <div class="process-bar reveal" style="margin-top:3rem;">
+      <div class="process-step">Strategy</div>
+      <div class="process-step">Discovery</div>
+      <div class="process-step">Analysis</div>
+      <div class="process-step">Design</div>
+      <div class="process-step active">Production</div>
+    </div>
+    <div class="content-block reveal">
+      <p class="block-title">The film</p>
+      <div class="video-frame">
+        <video controls playsinline preload="metadata" poster="assets/prayer-brain-poster.jpg">
+          <source src="assets/prayer-brain-web.mp4" type="video/mp4">
+          Your browser can't play this video.
+        </video>
+      </div>
+      <p class="video-caption">Sound on · 30 seconds</p>
+    </div>
+
+    <div class="two-col reveal" style="margin-top:2.5rem;">
+      <div>
+        <p class="block-title">Iterating for the viewer</p>
+        <p class="block-text">The first cut ran 15 seconds. It looked great, but the text disappeared before I could finish reading it, which defeated the whole point. I had it retimed to 30 seconds so each idea holds long enough to land, while the transitions keep their energy.</p>
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="stat-num">2×</div>
+            <div class="stat-label">Runtime, retimed for readability</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">0</div>
+            <div class="stat-label">Stock footage or design software</div>
+          </div>
+        </div>
+      </div>
+      <div class="obs-box look-back" style="align-self:center;">
+        <h3>What I learned</h3>
+        <p>Turning research into motion is an exercise in editing: what to cut, what to show instead of say, and how long a viewer needs before you move on. AI made the production possible for one person, but the storytelling and judgement calls were still mine.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <p class="eyebrow">Let's work together</p>
@@ -1244,6 +1393,7 @@
     { id: 'cs2',     link: document.querySelector('.nav-links a[href="#cs2"]') },
     { id: 'cs3',     link: document.querySelector('.nav-links a[href="#cs3"]') },
     { id: 'cs4',     link: document.querySelector('.nav-links a[href="#cs4"]') },
+    { id: 'cs5',     link: document.querySelector('.nav-links a[href="#cs5"]') },
     { id: 'contact', link: document.querySelector('.nav-links a[href="#contact"]') },
   ].filter(s => s.link && document.getElementById(s.id));
 
@@ -1257,7 +1407,7 @@
       const active = navSections.find(s => s.id === id);
       if (active) active.link.classList.add('nav-active');
       // Also highlight "My Work" button for case study sections
-      if (['cs1','cs2','cs3','cs4'].includes(id)) {
+      if (['cs1','cs2','cs3','cs4','cs5'].includes(id)) {
         workMenuBtn.classList.add('nav-active');
       } else {
         workMenuBtn.classList.remove('nav-active');
