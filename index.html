@@ -668,6 +668,19 @@
     box-shadow: 0 20px 50px rgba(46,34,32,0.18);
   }
   .video-frame video { display: block; width: 100%; height: auto; }
+  .video-frame.light { background: #fffaf7; }
+  .film-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+  .film-card {
+    display: block; text-decoration: none; color: inherit;
+    background: var(--white); border: 1px solid #e8ddd8; border-radius: 16px; overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .film-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(46,34,32,0.1); }
+  .film-card img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .film-card .film-body { padding: 1.2rem 1.4rem 1.4rem; }
+  .film-card .film-num { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+  .film-card h4 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
+  .film-card p { font-size: 0.85rem; color: var(--mid); line-height: 1.6; }
   .video-caption {
     font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em;
     text-transform: uppercase; color: var(--mid); margin-top: -0.6rem;
@@ -689,6 +702,7 @@
     .three-col { grid-template-columns: 1fr; }
     .process-bar.adkar .process-step { font-size: 0.48rem; letter-spacing: 0.02em; padding: 0.6rem 0.15rem; }
     .cs-card.cs-card-exp { flex-direction: column; align-items: flex-start; }
+    .film-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -706,7 +720,7 @@
         <li role="none"><a href="#cs2" role="menuitem">AI Calendaring</a></li>
         <li role="none"><a href="#cs3" role="menuitem">EV App</a></li>
         <li role="none"><a href="#cs4" role="menuitem">Change Management</a></li>
-        <li role="none"><a href="#cs5" role="menuitem">Research to Motion</a></li>
+        <li role="none"><a href="#cs5" role="menuitem">AI-Directed Motion</a></li>
       </ul>
     </li>
     <li><a href="#contact">Let's chat</a></li>
@@ -761,10 +775,10 @@
   </div>
   <div class="cs-card cs-card-exp reveal" onclick="document.getElementById('cs5').scrollIntoView({behavior:'smooth'})">
     <div>
-      <p class="num">Experiment · AI</p>
-      <h3>Turning Research into Motion</h3>
+      <p class="num">AI-Directed Work</p>
+      <h3>Motion Films, Directed with AI</h3>
     </div>
-    <span class="exp-go">Watch the film ▶</span>
+    <span class="exp-go">Watch the films ▶</span>
   </div>
 </div>
 
@@ -1126,6 +1140,18 @@
       </div>
 
       <div>
+        <!-- 30-SECOND FILM -->
+        <div class="content-block reveal">
+          <p class="block-title">The 30-second version</p>
+          <div class="video-frame light" style="margin-top:0;">
+            <video controls playsinline preload="metadata" poster="assets/change-mgmt-poster.jpg">
+              <source src="assets/change-mgmt-web.mp4" type="video/mp4">
+              Your browser can't play this video.
+            </video>
+          </div>
+          <p class="video-caption">Motion summary · Directed with AI · <a href="#cs5" style="color:var(--accent);">How I made it</a></p>
+        </div>
+
         <!-- AWARENESS -->
         <div class="process-bar adkar reveal">
           <div class="process-step active">Awareness</div>
@@ -1254,18 +1280,56 @@
   <div class="case-wrapper">
     <div class="case-header">
       <div class="case-sidebar">
-        <p class="cs-num">Experiment · AI</p>
-        <h2>Turning Research into Motion</h2>
-        <p>A research study on how prayer affects the brain was fascinating but dense, and I caught myself skimming. Sometimes seeing is easier than reading, so I turned it into a 30-second motion explainer.</p>
+        <p class="cs-num">AI-Directed Work</p>
+        <h2>AI-Directed Motion</h2>
+        <p>Some stories land better when you can watch them. I use AI like a production team: I shape the story, set the constraints and make the editorial calls, and Claude builds it, entirely in code.</p>
         <div class="meta">
           <p class="meta-label">Role</p>
           <p class="meta-val">Concept, scriptwriting &amp; creative direction</p>
           <p class="meta-label">Made with</p>
-          <p class="meta-val">Claude (AI), built entirely in code: animation, typography and an original synthesized score</p>
-          <p class="meta-label">Format</p>
-          <p class="meta-val">30-second film · 1080p</p>
+          <p class="meta-val">Claude (AI): animation, typography and original synthesized music, all in code. No stock footage or design software.</p>
+          <p class="meta-label">Output</p>
+          <p class="meta-val">Two 30-second films · 1080p</p>
         </div>
       </div>
+      <div>
+        <div class="content-block reveal">
+          <p class="block-title">My approach</p>
+          <ul class="proto-list" style="margin-top:1.2rem;">
+            <li><span class="proto-num">1</span><div class="proto-text"><strong>Distil</strong>Cut the source down to one clear story and decide what each scene must say.</div></li>
+            <li><span class="proto-num">2</span><div class="proto-text"><strong>Direct</strong>Brief the visual metaphors, style and constraints, the way I'd brief a design agency.</div></li>
+            <li><span class="proto-num">3</span><div class="proto-text"><strong>Edit</strong>Review every cut as a viewer would and send it back until it reads well.</div></li>
+          </ul>
+        </div>
+        <div class="film-grid reveal">
+          <a class="film-card" href="#cs4">
+            <img src="assets/change-mgmt-poster.jpg" alt="Leading Change Management film — title frame">
+            <div class="film-body">
+              <p class="film-num">Film 01 · Watch in Case Study 04</p>
+              <h4>Leading Change Management</h4>
+              <p>My own case study turned into a 30-second story, styled to match this portfolio.</p>
+            </div>
+          </a>
+          <a class="film-card" href="#film-02">
+            <img src="assets/quiet-mind-poster.jpg" alt="Turning Research into Motion film — title frame">
+            <div class="film-body">
+              <p class="film-num">Film 02 · Story below</p>
+              <h4>Turning Research into Motion</h4>
+              <p>A dense study on prayer, meditation and the brain, made watchable.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILM 02 -->
+    <div id="film-02" style="scroll-margin-top:90px;"></div>
+    <div class="content-block reveal">
+      <p class="block-title">Film 02 · Turning Research into Motion</p>
+      <h2 class="block-heading">The Neuroscience of a Quiet Mind</h2>
+      <p class="block-text">Research too dense to read, so I made it watchable.</p>
+    </div>
+    <div>
       <div>
         <!-- DISCOVERY -->
         <div class="process-bar">
@@ -1277,8 +1341,7 @@
         </div>
         <div class="content-block reveal">
           <p class="block-title">The spark</p>
-          <h2 class="block-heading">Too much to read, so what if you could watch it?</h2>
-          <p class="block-text">The study covered blood flow, metabolism, pain relief, the amygdala, emotions and neuroplasticity, all in nested bullet points and clinical terms. I wondered how many readers would stop halfway, and whether motion could carry the same ideas more easily.</p>
+          <p class="block-text">A research study on how prayer and meditation affect the brain was fascinating but dense, and I caught myself skimming. It covered blood flow, metabolism, pain relief, the amygdala, emotions and neuroplasticity, all in nested bullet points and clinical terms. I wondered how many readers would stop halfway, and whether motion could carry the same ideas more easily.</p>
         </div>
 
         <!-- ANALYSIS -->
@@ -1330,8 +1393,8 @@
     <div class="content-block reveal">
       <p class="block-title">The film</p>
       <div class="video-frame">
-        <video controls playsinline preload="metadata" poster="assets/prayer-brain-poster.jpg">
-          <source src="assets/prayer-brain-web.mp4" type="video/mp4">
+        <video controls playsinline preload="metadata" poster="assets/quiet-mind-poster.jpg">
+          <source src="assets/quiet-mind-web.mp4" type="video/mp4">
           Your browser can't play this video.
         </video>
       </div>
