@@ -3,8 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Esther She – Communications and Product UX Lead  2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Esther She – Communications and Product UX Lead 2026</title>
+<meta name="description" content="Esther She is a communications and UX lead in Singapore with 18+ years at GIC and Beep, designing and communicating change people actually adopt, with AI.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://esthershe83.github.io/">
+<meta property="og:title" content="Esther She · Communications × UX">
+<meta property="og:description" content="Clear words. Usable products. Change that sticks. Case studies from GIC and Beep, plus films directed with AI.">
+<meta property="og:image" content="https://esthershe83.github.io/assets/change-mgmt-poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --pink:   #f4c6d0;
@@ -15,11 +24,14 @@
     --accent: #e8856a;
     --white:  #fffaf7;
     --green:  #b8d8c4;
+    --accent-ink: #9e4029; /* darker coral for small text: passes WCAG AA */
+    --ink-mid:    #6b4d49; /* body text on pink areas: passes WCAG AA */
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  #cm-film { scroll-margin-top: 30px; }
 
   body {
     font-family: 'DM Sans', sans-serif;
@@ -30,32 +42,89 @@
 
   /* ── NAV ── */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.2rem 3rem;
-    background: rgba(255,250,247,0.88);
+    position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 100;
+    width: min(1216px, calc(100% - 32px));
+    display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
+    padding: 8px 8px 8px 24px;
+    border-radius: 999px;
+    background: rgba(255,250,247,0.85);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid #e8ddd8;
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(46,34,32,0.10);
+    box-shadow: 0 8px 24px rgba(46,34,32,0.06);
   }
   .nav-logo {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.8rem;
-    color: var(--mid);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--mid);
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    letter-spacing: -0.01em;
+    color: var(--dark);
     text-decoration: none;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--accent); }
-  .nav-links a.nav-active { color: var(--accent); }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--dark);
+    text-decoration: none;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent-ink); }
+  .nav-links a.nav-active { color: var(--accent-ink); }
+  .nav-links a.nav-cta {
+    display: inline-flex; align-items: center;
+    height: 44px; padding: 0 22px;
+    border-radius: 999px;
+    border: 1.5px solid var(--dark);
+    font-weight: 700;
+  }
+  .nav-links a.nav-cta:hover { background: var(--dark); color: var(--white); }
+
+  /* Mobile menu button + full-screen menu (shown below 768px) */
+  .nav-toggle {
+    display: none;
+    align-items: center; gap: 8px;
+    height: 44px; padding: 0 16px;
+    border: 0; border-radius: 999px;
+    background: var(--dark); color: var(--white);
+    font: 700 0.9rem 'DM Sans', sans-serif;
+    cursor: pointer;
+  }
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 300;
+    display: flex; flex-direction: column;
+    padding: 20px 22px 32px;
+    background: var(--dark); color: var(--white);
+  }
+  .mobile-menu[hidden] { display: none; }
+  .mobile-menu-top { display: flex; align-items: center; justify-content: space-between; }
+  .mobile-menu-top .nav-logo { color: var(--white); }
+  .mobile-menu-close {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; border: 0; border-radius: 999px;
+    background: var(--white); color: var(--dark); cursor: pointer;
+  }
+  .mobile-menu-links { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; list-style: none; }
+  .mobile-menu-links a {
+    display: flex; align-items: baseline; gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,250,247,0.14);
+    color: var(--white); text-decoration: none;
+    font-family: 'Playfair Display', serif; font-weight: 900; font-size: 2.6rem; line-height: 1.1;
+  }
+  .mobile-menu-links li:last-child a { border-bottom: 0; }
+  .mobile-menu-links a span { font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 700; color: var(--pink); }
+  .mobile-menu-bottom { display: flex; flex-direction: column; gap: 14px; }
+  .mobile-menu-bottom .btn-light {
+    display: flex; align-items: center; justify-content: center;
+    height: 54px; border-radius: 999px;
+    background: var(--white); color: var(--dark);
+    font-weight: 700; text-decoration: none;
+  }
+  .mobile-menu-contact { display: flex; justify-content: space-between; gap: 12px; font-size: 0.9rem; }
+  .mobile-menu-contact a { color: #e9d9d6; text-decoration: none; padding: 10px 0; }
+  body.menu-open { overflow: hidden; }
 
   /* ── MY WORK DROPDOWN ── */
   .nav-dropdown {
@@ -98,84 +167,126 @@
   .dropdown-menu li a {
     display: block;
     padding: 0.6rem 1.2rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.68rem;
-    color: var(--mid);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--dark);
     text-decoration: none;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
     transition: color 0.2s, background 0.2s;
     border-radius: 6px;
     margin: 0 0.3rem;
   }
   .dropdown-menu li a:hover {
-    color: var(--accent);
+    color: var(--accent-ink);
     background: rgba(232,133,106,0.08);
   }
 
   /* ── HERO ── */
   #hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 0 3rem 5rem;
-    background: linear-gradient(135deg, var(--pink) 0%, var(--peach) 55%, var(--cream) 100%);
-    position: relative;
+    padding: 9rem 2rem 4.5rem;
+    background: radial-gradient(60% 70% at 85% 30%, var(--pink) 0%, #f9dfdc 45%, var(--white) 80%), var(--white);
     overflow: hidden;
   }
-  #hero::before {
-    content: '';
-    position: absolute; top: -120px; right: -120px;
-    width: 500px; height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,255,255,0.45), transparent 70%);
+  .hero-inner {
+    max-width: 1216px; margin: 0 auto;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 3.5rem;
   }
+  .hero-copy {
+    flex: 1 1 520px; min-width: 0;
+    display: flex; flex-direction: column; gap: 1.75rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-meta { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+  .hero-status {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border-radius: 999px;
+    background: #e3f1e7; color: #24543a;
+    font-size: 0.82rem; font-weight: 700;
+  }
+  .hero-status::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #2f7a52; }
   .hero-eyebrow {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--mid);
-    margin-bottom: 1rem;
-    animation: fadeUp 0.8s ease both;
+    font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent-ink);
   }
-  .hero-name {
+  .hero-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(4rem, 10vw, 9rem);
     font-weight: 900;
-    line-height: 0.9;
+    font-size: clamp(2.25rem, 5.2vw, 4rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
     color: var(--dark);
-    margin-bottom: 1.5rem;
-    animation: fadeUp 0.8s 0.15s ease both;
   }
-  .hero-tagline {
-    font-size: 1.1rem;
-    color: var(--mid);
-    max-width: 480px;
-    line-height: 1.7;
-    animation: fadeUp 0.8s 0.3s ease both;
+  .hero-title em { font-style: italic; color: var(--accent-ink); }
+  .hero-sub { max-width: 540px; font-size: 1.25rem; line-height: 1.55; color: var(--ink-mid); }
+  .hero-actions { display: flex; align-items: center; gap: 1.75rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    height: 56px; padding: 0 30px; border-radius: 999px;
+    background: var(--dark); color: var(--white);
+    font-size: 1.05rem; font-weight: 700; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
-  .hero-badge {
-    display: inline-block;
-    margin-top: 2rem;
-    background: var(--dark);
-    color: var(--white);
-    padding: 0.5rem 1.4rem;
-    border-radius: 100px;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    animation: fadeUp 0.8s 0.45s ease both;
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(46,34,32,0.25); }
+  .link-secondary { color: var(--dark); font-weight: 700; text-underline-offset: 5px; }
+  .link-secondary:hover { color: var(--accent-ink); }
+  .hero-proof {
+    display: flex; flex-wrap: wrap; gap: 0.75rem 2rem;
+    padding-top: 1.5rem; border-top: 1px solid rgba(46,34,32,0.14);
   }
-  .hero-scroll {
-    position: absolute; bottom: 2.5rem; right: 3rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--mid);
-    writing-mode: vertical-rl;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    animation: bounce 2s infinite;
+  .hero-proof div { display: flex; flex-direction: column; gap: 4px; }
+  .hero-proof .label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mid); }
+  .hero-proof .value-serif { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.25rem; }
+  .hero-proof .value { font-size: 1rem; font-weight: 500; }
+
+  .hero-film { flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 1rem; animation: fadeUp 0.6s 0.15s ease both; }
+  .hero-film-link {
+    position: relative; display: block;
+    border-radius: 24px; overflow: hidden;
+    background: var(--white);
+    box-shadow: 0 30px 60px -20px rgba(46,34,32,0.35), 0 0 0 1px rgba(46,34,32,0.08);
+    transform: rotate(-1.5deg);
+    transition: transform 0.3s;
+  }
+  .hero-film-link:hover { transform: rotate(0deg) scale(1.01); }
+  .hero-film-link img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+  .play-chip {
+    position: absolute; left: 20px; bottom: 20px;
+    display: inline-flex; align-items: center; gap: 10px;
+    height: 48px; padding: 0 20px 0 8px; border-radius: 999px;
+    background: var(--dark); color: var(--white);
+    font-size: 0.95rem; font-weight: 700;
+  }
+  .play-chip span { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: var(--white); }
+  .hero-film figcaption { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 0 4px; font-size: 0.95rem; font-weight: 500; }
+  .hero-film figcaption .tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mid); }
+
+  .impact {
+    max-width: 1216px; margin: 5.5rem auto 0;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;
+    list-style: none;
+  }
+  .impact a {
+    height: 100%;
+    display: flex; flex-direction: column; gap: 10px;
+    padding: 24px; border-radius: 20px;
+    color: var(--dark); text-decoration: none;
+    transition: transform 0.2s;
+  }
+  .impact a:hover { transform: translateY(-3px); }
+  .impact .num { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 2.5rem; line-height: 1; }
+  .impact .num-sm { font-size: 1.75rem; line-height: 1.1; }
+  .impact .desc { font-size: 0.95rem; line-height: 1.4; }
+  .impact .src { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #5a3f3b; }
+  .impact .t1 { background: var(--pink); }
+  .impact .t2 { background: var(--peach); }
+  .impact .t3 { background: var(--cream); }
+  .impact .t4 { background: var(--green); }
+  .impact .t4 .src { color: #2c4a38; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-copy, .hero-film { animation: none; }
+    .hero-film-link, .hero-film-link:hover { transform: none; }
   }
 
   /* ── ABOUT ── */
@@ -687,8 +798,19 @@
   }
 
   @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
+    nav { top: 12px; padding: 6px 6px 6px 18px; }
     .nav-links { display: none; }
+    .nav-toggle { display: inline-flex; }
+    #hero { padding: 6.5rem 1rem 3rem; }
+    .hero-inner { gap: 2.5rem; }
+    .hero-copy { gap: 1.25rem; }
+    .hero-meta { flex-direction: column; align-items: flex-start; }
+    .hero-sub { font-size: 1.05rem; }
+    .hero-actions { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+    .hero-actions .link-secondary { align-self: center; padding: 10px 0; }
+    .hero-film-link { transform: none; border-radius: 18px; }
+    .play-chip { left: 12px; bottom: 12px; height: 40px; font-size: 0.85rem; }
+    .impact { margin-top: 3rem; }
     #about { grid-template-columns: 1fr; padding: 4rem 1.5rem; }
     .cs-cards { grid-template-columns: 1fr; padding: 0 1.5rem; }
     .case-header { grid-template-columns: 1fr; }
@@ -697,8 +819,6 @@
     .two-col { grid-template-columns: 1fr; }
     .img-grid { grid-template-columns: repeat(3, 1fr); }
     .stats-row { gap: 1.5rem; }
-    .hero-name { font-size: 4rem; }
-    #hero { padding: 0 1.5rem 4rem; }
     .three-col { grid-template-columns: 1fr; }
     .process-bar.adkar .process-step { font-size: 0.48rem; letter-spacing: 0.02em; padding: 0.6rem 0.15rem; }
     .cs-card.cs-card-exp { flex-direction: column; align-items: flex-start; }
@@ -709,12 +829,11 @@
 <body>
 
 <!-- NAV -->
-<nav>
-  <span class="nav-logo">Esther She · Portfolio 2026</span>
+<nav aria-label="Main">
+  <a class="nav-logo" href="#hero">Esther She</a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
     <li class="nav-dropdown">
-      <a href="#" id="work-menu-btn" aria-haspopup="true" aria-expanded="false" role="button">My Work</a>
+      <a href="#" id="work-menu-btn" aria-haspopup="true" aria-expanded="false" role="button">Work</a>
       <ul class="dropdown-menu" id="work-menu" role="menu">
         <li role="none"><a href="#cs1" role="menuitem">Intranet</a></li>
         <li role="none"><a href="#cs2" role="menuitem">AI Calendaring</a></li>
@@ -723,17 +842,77 @@
         <li role="none"><a href="#cs5" role="menuitem">AI-Directed Motion</a></li>
       </ul>
     </li>
-    <li><a href="#contact">Let's chat</a></li>
+    <li><a href="#cs5">AI films</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="https://www.linkedin.com/in/esthershe" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+    <li><a class="nav-cta" href="https://www.linkedin.com/in/esthershe" target="_blank" rel="noopener">Let's chat</a></li>
   </ul>
+  <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false">
+    Menu
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="mobile-menu-top">
+    <a class="nav-logo" href="#hero">Esther She</a>
+    <button class="mobile-menu-close" id="mobile-menu-close" type="button" aria-label="Close menu">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <ul class="mobile-menu-links">
+    <li><a href="#cases-intro"><span>01</span>Work</a></li>
+    <li><a href="#cs5"><span>02</span>AI films</a></li>
+    <li><a href="#about"><span>03</span>About</a></li>
+    <li><a href="https://www.linkedin.com/in/esthershe" target="_blank" rel="noopener"><span>04</span>Let's chat</a></li>
+  </ul>
+  <div class="mobile-menu-bottom">
+    <a class="btn-light" href="https://www.linkedin.com/in/esthershe" target="_blank" rel="noopener">View my LinkedIn ↗</a>
+    <div class="mobile-menu-contact">
+      <a href="mailto:erimei83@gmail.com">erimei83@gmail.com</a>
+      <a href="tel:+6596600503">+65 9660 0503</a>
+    </div>
+  </div>
+</div>
 
 <!-- HERO -->
 <section id="hero">
-  <p class="hero-eyebrow">Communications &amp; UX Designer · Singapore · 2026</p>
-  <h1 class="hero-name">Esther<br>She</h1>
-  <p class="hero-tagline">Empathy plays a huge role in me — my eyes and mind began to widen. Designing seamless experiences, one interaction at a time.</p>
-  <span class="hero-badge">📖 UX · Communications · Service Design</span>
-  <span class="hero-scroll">Scroll down ↓</span>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="hero-meta">
+        <span class="hero-status">Open to new roles</span>
+        <span class="hero-eyebrow">Communications × UX · Singapore</span>
+      </div>
+      <h1 class="hero-title">Clear words.<br>Usable products.<br>Change that <em>sticks.</em></h1>
+      <p class="hero-sub">I'm Esther She, a communications and UX lead with 18+ years at GIC and Beep. I research, design and communicate change that people actually adopt, and I direct AI to ship it faster.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#cases-intro">See my work
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="link-secondary" href="https://www.linkedin.com/in/esthershe" target="_blank" rel="noopener">View my LinkedIn ↗</a>
+      </div>
+      <div class="hero-proof">
+        <div><span class="label">Previously at</span><span class="value-serif">GIC · Beep</span></div>
+        <div><span class="label">Certified in AI</span><span class="value">AI Singapore AI4I® · Anthropic AI Fluency</span></div>
+      </div>
+    </div>
+
+    <figure class="hero-film">
+      <a class="hero-film-link" href="#cm-film" aria-label="Watch the 30-second film on leading change management">
+        <img src="assets/change-mgmt-poster.jpg" alt="Film frame: 1,500 people, 9 offices, with leadership at the centre of a network" width="1280" height="720">
+        <span class="play-chip"><span><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z" fill="#2e2220"/></svg></span>Watch · 30 sec</span>
+      </a>
+      <figcaption>Leading change for 1,500 people, told in 30 seconds <span class="tag">Directed with AI</span></figcaption>
+    </figure>
+  </div>
+
+  <ul class="impact" aria-label="Selected results">
+    <li><a class="t1" href="#cs4"><span class="num">1,500</span><span class="desc">staff across 9 offices moved to a new intranet</span><span class="src">GIC · Change management</span></a></li>
+    <li><a class="t2" href="#cs1"><span class="num">59% → 37%</span><span class="desc">bounce rate after the intranet redesign</span><span class="src">GIC · UX redesign</span></a></li>
+    <li><a class="t3" href="#cs3"><span class="num">+15%</span><span class="desc">growth in active users of the EV charging app</span><span class="src">Beep · Product UX</span></a></li>
+    <li><a class="t4" href="#cs3"><span class="num num-sm">The Straits Times</span><span class="desc">covered the one-stop EV charging platform launch</span><span class="src">Beep · In the press</span></a></li>
+  </ul>
 </section>
 
 <!-- ABOUT -->
@@ -1141,11 +1320,11 @@
 
       <div>
         <!-- 30-SECOND FILM -->
-        <div class="content-block reveal">
+        <div class="content-block reveal" id="cm-film">
           <p class="block-title">The 30-second version</p>
           <div class="video-frame light" style="margin-top:0;">
             <video controls playsinline preload="metadata" poster="assets/change-mgmt-poster.jpg">
-              <source src="assets/change-mgmt-web.mp4" type="video/mp4">
+              <source src="assets/change_management_30s.mp4" type="video/mp4">
               Your browser can't play this video.
             </video>
           </div>
@@ -1476,9 +1655,34 @@
         workMenuBtn.classList.remove('nav-active');
       }
     });
-  }, { threshold: 0.25 });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+  // (rootMargin watches a thin band mid-screen, so tall case studies still register as "active")
 
   navSections.forEach(s => sectionObserver.observe(document.getElementById(s.id)));
+  sectionObserver.observe(document.getElementById('hero')); // clears highlights when back at the top
+
+  // ── Mobile menu ──
+  const navToggle = document.getElementById('nav-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileClose = document.getElementById('mobile-menu-close');
+
+  function openMobileMenu() {
+    mobileMenu.hidden = false;
+    document.body.classList.add('menu-open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    mobileClose.focus();
+  }
+  function closeMobileMenu() {
+    mobileMenu.hidden = true;
+    document.body.classList.remove('menu-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+  navToggle.addEventListener('click', openMobileMenu);
+  mobileClose.addEventListener('click', () => { closeMobileMenu(); navToggle.focus(); });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !mobileMenu.hidden) { closeMobileMenu(); navToggle.focus(); }
+  });
 
   // ── FIX 2: Keyboard-accessible dropdown ──
   const workMenu = document.getElementById('work-menu');
